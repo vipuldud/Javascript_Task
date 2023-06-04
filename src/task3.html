@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Form</title>
+  <style>
+    .error {
+      border: 1px solid red;
+    }
+    .error-message {
+      color: red;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    label {
+      display: inline-block;
+      text-align: right;
+      padding-right: 10px;
+    }
+    input,
+    textarea {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Contact Form</h1>
+  <form id="contactForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+      <span id="nameError" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <span id="emailError" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="website">Website:</label>
+      <input type="url" id="website" name="website">
+      <span id="websiteError" class="error-message"></span>
+    </div>
+
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+      <span id="messageError" class="error-message"></span>
+    </div>
+
+    <div class="">
+      <input style="width:100px;"type="submit" value="Submit">
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (validateForm()) {
+        form.submit();
+      }
+    });
+
+    function validateForm() {
+      let isValid = true;
+
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const websiteInput = document.getElementById('website');
+      const messageInput = document.getElementById('message');
+
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const websiteError = document.getElementById('websiteError');
+      const messageError = document.getElementById('messageError');
+
+      nameInput.classList.remove('error');
+      emailInput.classList.remove('error');
+      websiteInput.classList.remove('error');
+      messageInput.classList.remove('error');
+
+      nameError.textContent = '';
+      emailError.textContent = '';
+      websiteError.textContent = '';
+      messageError.textContent = '';
+
+      if (nameInput.value.trim() === '') {
+        isValid = false;
+        nameInput.classList.add('error');
+        nameError.textContent = 'This field is required';
+      }
+
+      if (emailInput.value.trim() === '') {
+        isValid = false;
+        emailInput.classList.add('error');
+        emailError.textContent = 'A valid Email-address is required';
+      }
+
+      if (websiteInput.value.trim() === '') {
+        isValid = false;
+        websiteInput.classList.add('error');
+        websiteError.textContent = 'A valid Url is required';
+      }
+
+      if (messageInput.value.trim() === '') {
+        isValid = false;
+        messageInput.classList.add('error');
+        messageError.textContent = 'This field is required';
+      }
+
+      return isValid
+    }
+  </script>
+</body>
+</html>

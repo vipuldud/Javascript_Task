@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beautiful and Innovative Array Methods Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #008080;
+    }
+
+    h2 {
+      color: #008080;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      padding: 5px;
+      margin-right: 5px;
+      width: 80px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #008080;
+      color: #ffffff;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #006666;
+    }
+
+    .results {
+      margin-top: 20px;
+    }
+
+    .results p {
+      margin-bottom: 5px;
+    }
+
+    .results span {
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    function performArrayOperations() {
+      var inputArray1 = [];
+      var inputArray2 = [];
+
+      for (var i = 1; i <= 5; i++) {
+        var element1 = parseFloat(document.getElementById("array1Element" + i).value);
+        inputArray1.push(element1);
+
+        var element2 = parseFloat(document.getElementById("array2Element" + i).value);
+        inputArray2.push(element2);
+      }
+
+      var concatArray = inputArray1.concat(inputArray2);
+      var reversedArray = inputArray1.slice().reverse();
+      var sortedArray = inputArray2.slice().sort();
+      var filteredArray = inputArray1.filter(function(element) {
+        return element > 5;
+      });
+      var mappedArray = inputArray2.map(function(element) {
+        return element * 2;
+      });
+
+      document.getElementById("concatResult").textContent = concatArray.join(", ");
+      document.getElementById("reverseResult").textContent = reversedArray.join(", ");
+      document.getElementById("sortResult").textContent = sortedArray.join(", ");
+      document.getElementById("filterResult").textContent = filteredArray.join(", ");
+      document.getElementById("mapResult").textContent = mappedArray.join(", ");
+    }
+  </script>
+</head>
+<body>
+  <h1>Beautiful and Innovative Array Methods Demo</h1>
+  
+  <h2>Enter elements for Array 1:</h2>
+  <input type="number" id="array1Element1" placeholder="Element 1">
+  <input type="number" id="array1Element2" placeholder="Element 2">
+  <input type="number" id="array1Element3" placeholder="Element 3">
+  <input type="number" id="array1Element4" placeholder="Element 4">
+  <input type="number" id="array1Element5" placeholder="Element 5">
+  
+  <h2>Enter elements for Array 2:</h2>
+  <input type="number" id="array2Element1" placeholder="Element 1">
+  <input type="number" id="array2Element2" placeholder="Element 2">
+  <input type="number" id="array2Element3" placeholder="Element 3">
+  <input type="number" id="array2Element4" placeholder="Element 4">
+  <input type="number" id="array2Element5" placeholder="Element 5">
+
+  <br><br>
+  <button onclick="performArrayOperations()">Perform Array Operations</button>
+
+  <div class="results">
+    <h2>Results:</h2>
+    <p>Concatenated array: <span id="concatResult"></span></p>
+    <p>Reversed array: <span id="reverseResult"></span></p>
+    <p>Sorted array: <span id="sortResult"></span></p>
+    <p>Filtered array (greater than 5): <span id="filterResult"></span></p>
+    <p>Mapped array (doubled elements): <span id="mapResult"></span></p>
+  </div>
+</body>
+</html>
+

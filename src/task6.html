@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Sorter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #337ab7;
+    }
+    
+    .input-container {
+      margin-bottom: 20px;
+    }
+    
+    .input-container input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+    }
+    
+    .sort-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #337ab7;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .sort-button:hover {
+      background-color: #23527c;
+    }
+    
+    .output-container {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    function sortString() {
+      var inputString = document.getElementById("inputString").value;
+      var charArray = inputString.split("");
+      charArray.sort();
+      var sortedString = charArray.join("");
+      document.getElementById("outputString").textContent = sortedString;
+    }
+  </script>
+</head>
+<body>
+  <h1>String Sorter</h1>
+  <div class="input-container">
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString">
+  </div>
+  <button class="sort-button" onclick="sortString()">Sort</button>
+  <div class="output-container">
+    <label for="outputString">Sorted string:</label>
+    <span id="outputString"></span>
+  </div>
+</body>
+</html>
